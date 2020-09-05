@@ -11,6 +11,8 @@ const parseValidation = {
         level: Joi
             .number()
             .required(),
+        maxTraversedPages: Joi
+            .number()
     }),
 };
 
@@ -24,12 +26,14 @@ const searchValidation = {
     }),
 };
 
-// TODO in real world parsing should be background task
+/**
+ * In real world parsing should be background task
+ */
 router.post("/parse", validate(parseValidation, {}, {}), async (req, res, next) => {
     try {
-        const {url, level} = req.body;
+        const {url, level, maxTraversedPages} = req.body;
 
-        const result = await wikiService.parsePage(url, level);
+        const result = await wikiService.parsePage(url, level, maxTraversedPages);
 
         res.status(200).json(result);
     } catch (e) {

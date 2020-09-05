@@ -1,8 +1,8 @@
 const posts = require("./posts");
 const parse = require("./parser");
 
-async function parsePage(url, level) {
-    const result = await parse(url, level, 3);
+async function parsePage(url, level, maxTraversedLinks) {
+    const result = await parse(url, level, maxTraversedLinks);
 
     for (const item of result) {
         await posts.save(item.url, item.title, item.parentUrl, item.level);
