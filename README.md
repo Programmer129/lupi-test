@@ -12,13 +12,10 @@ Test NodeJS web application
 
 Considering you have all requirements installed.
 
-Open your terminal:
-
-Run the following:        
-  1)   `npm install`
-  2)   `node src/app.js` 
-
-Note: Don't forget to change DB parameters in `src/db.js`.
+Steps:
+  1) Go to `resources` directory and execute `schema.sql`         
+  2)   `npm install`
+  3)   `DB_CONNECTION="mysql://root:pass@localhost:3306/lupi_test" node src/app.js` 
 
 ## Play with it
 

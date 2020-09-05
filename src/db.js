@@ -1,11 +1,5 @@
 const mysql = require('mysql2/promise');
 
-// TODO change this
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'test123',
-    database: 'lupi_test'
-});
+const pool = mysql.createPool(process.env.DB_CONNECTION);
 
 module.exports = pool;
