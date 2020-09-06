@@ -14,13 +14,9 @@ const isFound = (link, links) => {
 
 /**
  * Because there could be a bunch of links on a page and Wikipedia can block IP,
- * @param maxTraversedLinks is used to limit traversed pages
- * @param url
- * @param level
- * @param maxTraversedLinks
- * @returns {Promise<[]>}
+ * @param maxTraversedLinks is used to limit traversed links per page
  */
-async function parse(url, level, maxTraversedLinks = 10) {
+async function parse(url, level, maxTraversedLinks = 5) {
     const result = [];
     let links = [{
         url: url,
@@ -35,6 +31,7 @@ async function parse(url, level, maxTraversedLinks = 10) {
             links.shift();
             continue;
         }
+        console.info(`parsing page - ${url}`);
         const res = await parsePage(url);
         const exploredLinks = res.links;
         if (res.title) {
@@ -63,6 +60,8 @@ async function parse(url, level, maxTraversedLinks = 10) {
             }
         }
     }
+
+    console.info(`total pages parsed - ${result.length}`);
 
     return result;
 }

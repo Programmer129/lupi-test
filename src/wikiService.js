@@ -8,7 +8,9 @@ async function parsePage(url, level, maxTraversedLinks) {
         await posts.save(item.url, item.title, item.parentUrl, item.level);
     }
 
-    return result;
+    return {
+        itemsParsed: result.length
+    };
 }
 
 async function findPath(pageId, queryString) {

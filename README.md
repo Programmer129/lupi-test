@@ -17,6 +17,7 @@ Steps:
   2)   `npm install`
   3)   `DB_CONNECTION="mysql://root:pass@localhost:3306/lupi_test" node src/app.js` 
 
+Note: don't forget to change password in connection string
 ## Play with it
 
 Parse wiki url
@@ -31,7 +32,8 @@ curl --location --request POST 'http://localhost:3000/api/parse' \
 ```
 
 Note: Because there could be a bunch of links on a page and Wikipedia can block IP,
-maxTraversedLinks is used to limit traversed pages
+maxTraversedLinks is used to limit traversed links per page.
+It may still take up to minute.
 
 Find path
 
