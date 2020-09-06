@@ -11,7 +11,7 @@ const parseValidation = {
         level: Joi
             .number()
             .required(),
-        maxTraversedPages: Joi
+        maxTraversedLinks: Joi
             .number()
     }),
 };
@@ -31,9 +31,9 @@ const searchValidation = {
  */
 router.post("/parse", validate(parseValidation, {}, {}), async (req, res, next) => {
     try {
-        const {url, level, maxTraversedPages} = req.body;
+        const {url, level, maxTraversedLinks} = req.body;
 
-        const result = await wikiService.parsePage(url, level, maxTraversedPages);
+        const result = await wikiService.parsePage(url, level, maxTraversedLinks);
 
         res.status(200).json(result);
     } catch (e) {

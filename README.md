@@ -27,7 +27,7 @@ curl --location --request POST 'http://localhost:3000/api/parse' \
 --data-raw '{
     "level": 4,
     "url": "https://en.wikipedia.org/wiki/Alan_Turing",
-    "maxTraversedPages": 3
+    "maxTraversedLinks": 2
 }'
 ```
 
@@ -42,7 +42,7 @@ curl --location --request POST 'http://localhost:3000/api/search' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "pageId": 1,
-    "queryString": "Territories"
+    "queryString": "Twemoji 1f527.svg"
 }'
 ```
 
